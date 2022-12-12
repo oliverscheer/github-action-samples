@@ -10,7 +10,7 @@ I'm a big fan of GitHub Actions because they are easy to develop and helps very 
 
 ## My Tipps & Tricks
 
-### x. Generate better outputs in logs
+### 1. Generate better outputs in logs
 
 Some bash scripts can generate a lot of valuable output, or a loooooong list to scroll down to find the right information.
 
@@ -35,10 +35,15 @@ steps:
           echo "Inside group"
           echo "::endgroup::"
 ```
-The output will look like:
-![img](media/)
 
-### x. Add outputs to the summary page
+The output will look like:
+![img](media/improved_logging.png)
+
+If required you can expanded the list:
+![img](media/improved_logging_expanded.png)
+
+
+### 2. Add outputs to the summary page
 
 I was reading the logs of each step to check if something was successful or for some outputs during some tasks.
 
@@ -65,9 +70,30 @@ This will result to this output on the summary page, as soon as the step is done
 
 ![img](media/step_summary.png)
 
-### x. Use artifacts for outputs and inputs
+### 3. Use artifacts for outputs and inputs
 
 What was build? And why I didn't run like on my machine?
+
+```yaml
+steps:
+
+  - id: generate-log-file
+    shell: bash
+    run: |
+        for i in {1..100}
+        do
+        echo "Log $i" > log.txt
+        done
+
+  - id: upload-log-file
+    use:  uses: actions/upload-artifact@v3
+    with:
+        name: log.txt
+        path: log.txt
+```
+
+
+### x. Use inputs
 
 ### x. Test workflows in a branch
 
