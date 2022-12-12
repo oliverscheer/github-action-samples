@@ -72,7 +72,7 @@ This will result to this output on the summary page, as soon as the step is done
 
 ### 3. Use artifacts for outputs and inputs
 
-What was build? And why I didn't run like on my machine?
+Not new, but extrem helpful in finding issues, or get access to remote generated content. Just create some files, and upload them as artifacts. You can download them easily in other jobs in the same workflow. This makes sense if you build something on linux for example, but need it on windows in a later step, for example.
 
 ```yaml
 steps:
@@ -92,6 +92,7 @@ steps:
         path: log.txt
 ```
 
+![img](media/artifacts.png)
 
 ### 4. Use inputs
 

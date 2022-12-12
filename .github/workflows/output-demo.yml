@@ -25,9 +25,9 @@ jobs:
           echo "| C   | 3.141 |" >> $GITHUB_STEP_SUMMARY
 
           echo "::debug::Set the Octocat variable"
-          echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-          echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
-          echo "::error file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
+          echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon --> Sample error message"
+          echo "::warning file=app.js,line=1,col=5,endColumn=7::Missing semicolon --> You maybe should do Visual Basic to avoid those semicolon challenge ;-)"
+          echo "::error file=app.js,line=1,col=5,endColumn=7::Missing semicolon --> Have you considered Python as dev language?"
           echo "::add-mask::Mona The Octocat"
 
       - id: greet-the-user
