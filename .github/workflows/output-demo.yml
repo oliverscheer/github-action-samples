@@ -1,5 +1,4 @@
 name: Output Demo
-description: A sample workflow
 on:
   workflow_dispatch:
     inputs:

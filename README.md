@@ -93,7 +93,9 @@ steps:
 ```
 
 
-### x. Use inputs
+### 4. Use inputs
+
+![img](media/inputs.png)
 
 ### x. Test workflows in a branch
 
