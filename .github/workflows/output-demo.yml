@@ -1,11 +1,13 @@
 name: Output Demo
-on: [ workflow_dispatch ]
+description: A sample workflow
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "The name of the user"
+        default: "Oliver"
+        required: true
 
-inputs:
-  USER_NAME:
-    description: "The name of the user"
-    default: "Oliver"
-    required: true
 
 jobs:
   prepare-job:
@@ -29,11 +31,10 @@ jobs:
           echo "::error file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
           echo "::add-mask::Mona The Octocat"
 
-
       - id: greet-the-user
         shell: bash
         run: |
-          echo "Hello ${{ inputs.USER_NAME }}"
+          echo "Hello ${{ inputs.username }}"
 
   execute-job:
     runs-on: ubuntu-latest
