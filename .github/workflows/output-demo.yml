@@ -9,8 +9,13 @@ jobs:
 
       - shell: bash
         run: |
-          echo "# Results" >> $GITHUB_STEP_SUMMARY
-          echo ":rocket: Prep successful" >> $GITHUB_STEP_SUMMARY
+          # Writing into step summary
+          echo ":rocket: Preparation was successful" >> $GITHUB_STEP_SUMMARY
+          echo "| Key | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "| --- | ----- |" >> $GITHUB_STEP_SUMMARY
+          echo "| A   | 'red' |" >> $GITHUB_STEP_SUMMARY
+          echo "| B   | 42    |" >> $GITHUB_STEP_SUMMARY
+          echo "| C   | 3.141 |" >> $GITHUB_STEP_SUMMARY
 
           echo "::debug::Set the Octocat variable"
           echo "::notice file=app.js,line=1,col=5,endColumn=7::Missing semicolon"
@@ -30,6 +35,7 @@ jobs:
 
           echo "::group::My title"
           echo "Inside group"
+          # output here all logs
           echo "::endgroup::"
 
           echo "::group::My title 2"
