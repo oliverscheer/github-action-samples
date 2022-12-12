@@ -7,7 +7,6 @@ on:
         default: "Oliver"
         required: true
 
-
 jobs:
   prepare-job:
     runs-on: ubuntu-latest

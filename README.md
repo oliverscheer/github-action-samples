@@ -12,7 +12,7 @@ I'm a big fan of GitHub Actions because they are easy to develop and helps very 
 
 ### 1. Generate better outputs in logs
 
-Some bash scripts can generate a lot of valuable output, or a loooooong list to scroll down to find the right information.
+Some bash scripts can generate a lot of valuable output, or a loooooong list to scroll down to find the right information. During some projects I learnt some helpful tricks, that I want to share here with you.
 
 ```yaml
 steps:
@@ -94,22 +94,44 @@ steps:
 
 ![img](media/artifacts.png)
 
-### 4. Use inputs
+### 4. Trigger manually on demand and use inputs
+
+GitHub Actions are very dynamic and can be configured by input variables that you can use inside the logic.
+
+You can define to run the workflow manually on GitHub with the `workflow_dispatch` trigger:
+
+```yaml
+name: Output Demo
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "The name of the user"
+        default: "Oliver"
+        required: true
+```
+
 
 ![img](media/inputs.png)
 
-### x. Test workflows in a branch
+In later steps you can access those inputs very simple with the followin snippet:
 
-### x. Build Re-usable components
-
-### x. Good practices for naming inputs and environment vars
-
-### x. Parallel execution
-
-### x. Write an az cli like action
-
-### x. Context
-
-### x. add linting but only for added/changed files
+```yaml
+echo "Hello ${{ inputs.username }}"
+```
 
 ## Summary
+
+After applying some of my favorite tricks the summary page looks like this:
+
+![img](media/full_summary.png)
+
+
+Coming next:
+- Test workflows in a branch
+- Build Re-usable components
+- Good practices for naming inputs and environment vars
+- Parallel execution
+- Write an az cli like action
+- Context
+- add linting but only for added/changed files
