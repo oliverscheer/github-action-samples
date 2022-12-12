@@ -33,9 +33,12 @@ jobs:
         run: |
           echo "# Results" >> $GITHUB_STEP_SUMMARY
 
-          echo "::group::My title"
-          echo "Inside group"
-          # output here all logs
+          echo "::group::My very long list"
+          echo "Log output of execution"
+          for i in {1..100}
+          do
+            echo "Log $i"
+          done
           echo "::endgroup::"
 
           echo "::group::My title 2"
