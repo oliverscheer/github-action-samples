@@ -70,7 +70,7 @@ jobs:
           done
 
       - id: upload-log-file
-        uses:  uses: actions/upload-artifact@v3
+        uses:  actions/upload-artifact@v3
         with:
           name: log.txt
           path: log.txt
