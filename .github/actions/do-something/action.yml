@@ -1,0 +1,21 @@
+name: "do-something-action"
+description: "Outputs some values"
+inputs:
+  user-name:
+    description: "Name of user"
+    required: true
+    default: "Oliver"
+# outputs:
+#   user-greeting:
+#     description: "Complete greeting text for user"
+
+jobs:
+  say-hello-job:
+    name: 'say hello job'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Say welcome'
+        run: echo "Hello, Oliver"
+
+      - name: 'Say good bye'
+        run: echo "Good bye, Oliver

@@ -1,0 +1,20 @@
+name: hello-world-with-parameters
+
+on:
+  workflow_dispatch:
+    inputs:
+      your_name:
+        description: 'Your name'
+        required: true
+        default: 'John'
+
+jobs:
+  say-hello-job:
+    name: 'say hello job'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Say welcome'
+        run: echo "Hello, " ${{ github.event.inputs.your_name }}
+
+      - name: 'Say good bye'
+        run: echo "Good bye, " ${{ github.event.inputs.your_name }}

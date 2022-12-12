@@ -1,2 +1,2 @@
-# github-samples
+# github-actions-samples
 My samples about GitHub

@@ -1,0 +1,33 @@
+name: hello-world-with-included-actions
+
+on:
+  workflow_run:
+    workflows: ["Main Workflow"]
+    types:
+      - completed
+
+  workflow_dispatch:
+    inputs:
+      user_name:
+        description: 'Your name'
+        required: true
+        default: 'John'
+
+jobs:
+  say-hello-job:
+    name: 'say hello job'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - id: test
+        run: echo "Hi, ${{ github.event.inputs.user_name }}"
+
+      - id: foo
+        name: "foo"
+        uses: ./.github/actions/hello-world-composite-action
+        with:
+          who-to-greet: ${{ github.event.inputs.user_name }}'
+
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
