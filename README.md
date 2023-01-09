@@ -120,6 +120,28 @@ In later steps you can access those inputs very simple with the followin snippet
 echo "Hello ${{ inputs.username }}"
 ```
 
+### 5. One line for summary output and logging output
+
+If you want to output some information on the summary page and also in the classic logging, you can use the following trick.
+
+```yaml
+- name: Duplicate outputs in log and summary
+  run: |
+    # 2 lines for ouput in logging and in summary
+    echo "You want to output this in the logs and summary"
+    echo "You want to output this in the logs and summary" >> $GITHUB_STEP_SUMMARY
+
+    # 1 line for output and summary
+    echo "You want to output this in the logs and summary" | tee -a $GITHUB_STEP_SUMMARY
+```
+
+The `tee` command allows us to print something and take this as an input to some other "outputs" like files or env vars.
+The good thing about `tee` is, that you can use multiple outputs in one line:
+
+```bash
+tee -a myfile.txt myotherfile.txt $GITHUB_STEP_SUMMARY
+```
+
 ## Summary
 
 After applying some of my favorite tricks the summary page looks like this:

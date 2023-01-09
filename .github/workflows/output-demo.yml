@@ -107,3 +107,13 @@ jobs:
           echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
           echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
           echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
+
+      - name: Duplicate outputs in log and summary
+        run: |
+          # 2 lines for ouput in logging and in summary
+          echo "You want to output this in the logs and summary"
+          echo "You want to output this in the logs and summary" >> $GITHUB_STEP_SUMMARY
+
+          # 1 line for output and summary
+          echo "You want to output this in the logs and summary" | tee -a $GITHUB_STEP_SUMMARY
+
