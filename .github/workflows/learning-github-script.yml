@@ -11,21 +11,21 @@ jobs:
       - name: Comment on new issue
         uses: actions/github-script@0.8.0
         with:
-          github-token: {% raw %}${{secrets.GITHUB_TOKEN}}{% endraw %}
+          github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-             const fs = require('fs')
-             const issueBody = fs.readFileSync(".github/ISSUE_RESPONSES/comment.md", "utf8")
-             github.issues.createComment({
-             issue_number: context.issue.number,
-             owner: context.repo.owner,
-             repo: context.repo.repo,
-             body: issueBody
-             })
+            const fs = require('fs')
+            const issueBody = fs.readFileSync(".github/ISSUE_RESPONSES/comment.md", "utf8")
+            github.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: issueBody
+            })
       - name: Add issue to project board
         if: contains(github.event.issue.labels.*.name, 'bug')
         uses: actions/github-script@0.8.0
         with:
-          github-token: {% raw %}${{secrets.GITHUB_TOKEN}}{% endraw %}
+          github-token: }${{secrets.GITHUB_TOKEN}}
           script: |
             github.projects.createCard({
             column_id: {{columnID}},
